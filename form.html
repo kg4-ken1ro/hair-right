@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>application form</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <link rel="stylesheet" href="css/slick-theme.css">
+  </head>
+  <body>
+    <header class="header" id="header">
+        <div class="header-wrap">
+            <h1 class="header-h1"><img class="logo" src="img/logo450450.png" alt="ロゴ" /></h1>
+            <nav class="nav-menu">
+                <ul>
+                  <li class="list-item"><a href="index.html#home">ホーム</a></li>
+                  <li class="list-item"><a href="index.html#menu">メニュー</a></li>
+                  <li class="list-item"><a href="index.html#footer">店舗情報</a></li>
+                  <li class="list-item"><a href="form.html">求人情報</a></li>
+                </ul>
+            </nav>
+            <div class="openbtn1"><span></span><span></span><span></span></div>
+        </div>
+        <div class="humbergerIcon-menu">
+            <ul class="humbergerIcon-Lists">
+                <li class="humbergerIcon-li"><a href="index.html#home">ホーム</a></li>
+                <li class="humbergerIcon-li"><a href="index.html#menu">メニュー</a></li>
+                <li class="humbergerIcon-li"><a href="index.html#footer">店舗情報</a></li>
+                <li class="humbergerIcon-li"><a href="form.html">求人情報</a></li>
+            </ul>
+        </div>
+    </header>
+    <section class="recruit" id="recruit">
+        <main class="recruit-main">
+            <div class="recruit-h2">求人情報</div>
+            <ul class="accordion-area">
+                <li>
+                  <section class="r">
+                    <h3 class="title">正社員</h3>
+                    <div class="box">
+                      <p>年齢　経験者不問。未経験者35歳くらいまで。</p>
+                      <p>月給25万～</p>
+                      <p>社会保険加入</p>
+                    </div>
+                  </section>
+                </li>
+                <li>
+                  <section class="r">
+                    <h3 class="title">アルバイト</h3>
+                    <div class="box">
+                      <p>要相談。お気軽にご相談ください。</p>
+                      <p>時給：1200円～</p>
+                      <p>制服貸与</p>
+                    </div>
+                  </section>
+                </li>
+            </ul>    
+        </main> 
+    </section>
+    <form action="#">
+      <h2 class="app-title">応募フォーム</h2>
+      <table class="application">
+        <tr>
+          <th class="table-th">お名前：</th>
+          <td><input class="table-td" type="text"></td>
+        </tr>
+        <tr>
+          <th class="table-th">電話番号：</th>
+          <td><input class="table-td" type="tel"></td>
+        </tr>
+        <tr>
+          <th class="table-th">区分：</th>
+          <td class="td-wrap">
+            <label for="full" ><input class="t-radio" id="full" type="radio" name="staff" value="full-time"><span class="radio-label">正社員</span></label>
+            <label for="part" ><input class="t-radio" id="part" type="radio" name="staff" value="part-time"><span class="radio-label">アルバイト</span></label>
+          </td>
+        </tr>
+        <tr>
+          <th class="table-th message" >備考：</th>
+          <td><textarea class="textarea" name="note" id="note" cols="50" rows="10" placeholder="備考："></textarea></td>
+        </tr>
+      </table>
+      <div class="button-wrap">
+        <input type="reset" value="リセット" class="reset-btn">
+        <input type="submit" value="送信する" class="sub-btn">
+      </div>
+    </form>
+   
+    <footer class="footer" id="footer">
+      <h2 class="footer-h2">ヘアーライト</h2>
+      <div class="float-wrap">
+          <div class="left-wrap">
+              <div class="footer-info">
+                  <h3 class="footer-h3">INFO</h3>
+                  <p class="footer-p">東京都渋谷区一丁目26-3</p>
+                  <p class="footer-p">https://hair-right-s.jp</p>
+                  <p class="footer-p">○○駅下車　徒歩〇分</p>
+              </div>
+              <div class="footer-open">
+                  <h3 class="footer-h3">OPEN</h3>
+                  <p class="footer-p">00:00～00:00</p>
+              </div>
+              <div class="footer-resrve">
+                  <h3 class="footer-h3">RESERVED</h3>
+                  <h2 class="h2-tel"><a href="tel:+000-0000-0000">000-0000-0000</a></h2>
+              </div>
+          </div>
+          <div class="right-wrap">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.7241911140673!2d139.69133181443033!3d35.659166380199395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cab01d553ad%3A0x6b51b443089d96a1!2z44CSMTUwLTAwNDYg5p2x5Lqs6YO95riL6LC35Yy65p2-5r-k77yR5LiB55uu77yS77yW4oiS77yTIOiqreWjsua4i-iwt-ODk-ODqw!5e0!3m2!1sja!2sjp!4v1673612138041!5m2!1sja!2sjp" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+      </div>
+      <div class="copyright">
+          <small>&copy;美容室 ヘアーライト ALL RIGHTS RESERVED.</small>
+      </div>
+    </footer>
+    <script src="js/jquery-3.6.3.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

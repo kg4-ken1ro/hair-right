@@ -1,0 +1,1516 @@
+/* common */
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+a {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 450px) {
+    .header {
+        max-width: 450px;
+        width: 100%;
+        height: 100px;
+        position: fixed;
+        top: 0;
+        z-index: 11;
+    }
+    .header-wrap {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .header-wrap.active {
+        display: none;
+    }
+    .header-h1 {
+        margin-left: 7%;
+        width: 80px;
+        height: 80px;
+    }
+    .logo {
+        width: 100%;
+        object-fit: cover;
+    }
+    .nav-menu {
+        display: none;
+    }
+    .openbtn1 {
+           /*ボタン内側の基点となるためrelativeを指定。
+    追従するナビゲーションの場合はfixed＋top、rightといった位置をセットで指定*/
+        position: relative;
+        cursor: pointer;
+        width: 50px;
+        height:50px;
+        border-radius: 5px;
+        margin-right: 7%;
+    }
+
+    /*ボタン内側*/
+    .openbtn1 span{
+        display: inline-block;
+        transition: all .4s;/*アニメーションの設定*/
+        position: absolute;
+        left: 14px;
+        height: 2px;
+        border-radius: 5px;
+        background: #000;
+        width: 58%;
+    }
+
+    .openbtn1 span:nth-of-type(1) {
+        top:13px;	
+    }
+
+    .openbtn1 span:nth-of-type(2) {
+        top:19px;
+    }
+
+    .openbtn1 span:nth-of-type(3) {
+        top:25px;
+    }
+
+    .openbtn1 span:nth-of-type(3)::after {
+        content:"Menu";/*3つ目の要素のafterにMenu表示を指定*/
+        position: absolute;
+        top: 6px;
+        left: 0;
+        color: #000;
+        font-size: 0.6rem;
+        text-transform: uppercase;
+    }
+
+    /*activeクラスが付与されると線が回転して×になり、Menu⇒Closeに変更*/
+    .openbtn1.active span:nth-of-type(1) {
+        top: 14px;
+        left: 18px;
+        transform: translateY(6px) rotate(-45deg);
+        width: 30%;
+    }
+
+    .openbtn1.active span:nth-of-type(2) {
+        opacity: 0;
+    }
+
+    .openbtn1.active span:nth-of-type(3){
+        top: 26px;
+        left: 18px;
+        transform: translateY(-6px) rotate(45deg);
+        width: 30%;
+    }
+
+    .openbtn1.active span:nth-of-type(3)::after {
+        content:"Close";/*3つ目の要素のafterにClose表示を指定*/
+        transform: translateY(0) rotate(-45deg);
+        top:5px;
+        left:4px;
+    }
+
+    .humbergerIcon-menu {
+        display: none;
+    }
+    .humbergerIcon-menu.active {
+        display: block;
+        visibility: visible;
+        width: 100vw;
+        height: 100vh;
+        background-color: #fff;
+    }
+    .humbergerIcon-Lists {
+        width: 100%;
+        padding-top: 40%;
+    }
+    .humbergerIcon-li {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .humbergerIcon-li a {
+        font-size: 20px;
+        font-weight: bold;
+        color: #000;
+    }
+    .humbergerIcon-li a:hover {
+        font-size: 20px;
+        background-color: #bcd537;
+        padding: 7px;
+        border-radius: 10px;
+    }
+
+    /* home */
+    .home {
+        max-width: 450px;
+        width: 100%;
+        margin-top: 100px;
+    }
+    .mv {
+        margin: auto;
+        display: block;
+        width: 80%;
+        height: 67vw;
+    }
+    .slider {
+        position:relative;
+        z-index: 1;
+      /*↑z-indexの値をh1のz-indexの値よりも小さくして背景に回す*/
+    }
+    /*　背景画像設定　*/
+    
+    /* .slider-item01 {
+        background:url(../img/slide-item01.png);
+    }
+    
+    .slider-item02 {
+        background:url(../img/slide-item02.png);
+    }
+    
+    .slider-item03 {
+        background:url(../img/slide-item03.png);
+    } */
+    
+    .slider-item img {
+        width: 100%;/*各スライダー全体の横幅を画面の高さいっぱい（100%）にする*/
+        /* height: 200px; 各スライダー全体の縦幅を画面の高さいっぱい（100vh）にする */
+        /* background-repeat: no-repeat;背景画像をリピートしない */
+        /* background-position: center;背景画像の位置を中央に */
+        /* background-size: cover;背景画像が.slider-item全体を覆い表示 */
+        object-fit: cover;
+    }
+    
+    /*ドットナビゲーションの設定*/
+    
+    .slick-dots {
+      position: relative;
+      z-index: 3;
+      text-align:center;
+      margin:0 0 50px 0;/*ドットの位置*/
+    }
+    
+    .slick-dots li {
+        display:inline-block;
+        margin:0 5px;
+    }
+    
+    .slick-dots button {
+        color: transparent;
+        outline: none;
+        width:8px;/*ドットボタンのサイズ*/
+        height:8px;/*ドットボタンのサイズ*/
+        display:block;
+        border-radius:50%;
+        background:#fff;/*ドットボタンの色*/
+    }
+    
+    .slick-dots .slick-active button{
+        background:#333;/*ドットボタンの現在地表示の色*/
+    }
+
+    /* menu */
+    .menu {
+        max-width: 450px;
+        width: 100%;
+    }
+    .menu-mens-wrap {
+        margin: 5% 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .menu-ladys-wrap {
+        margin: 5% 0;
+    }
+    .menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .menu-img {
+        width: 150px;
+        height: 100px;
+    }
+    .menu-img img {
+        width: 100%;
+        object-fit: cover;
+    }
+    .mens-title {
+        margin: 10% auto 0 auto;
+        text-align: center;
+    }
+    .ladys-title {
+        margin-top: 15%; 
+        text-align: center;
+    }
+    .menu-h2 {
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .menu-p {
+        font-size: 24px;
+    }
+    .menu-boxs {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .menu-box {
+        margin: 5% auto;
+        display: block;
+        width: 50vw;
+        height: 40vw;
+        background-color: #bcd537;
+        border-radius: 10px;
+        box-shadow: 10px 10px 1px #000;
+        transform: skewX(-10deg);
+        transition: all 0.7s linear;
+    }
+    .menu-box:hover {
+        transform: translate(10px,10px);
+        box-shadow: none;
+        background-color: #d9eaec;
+    }
+    .menu-box h3 {
+        text-align: center;
+        margin-top: 28%;
+        font-size: 20px;
+    }
+    .menu-box p {
+        text-align: center;
+        margin-top: 10%;
+        font-size: 20px;
+    }
+
+    /*リンクを右下に固定*/
+    #page-top {
+        position: fixed;
+        right: 10px;
+        bottom:10px;
+        z-index: 2;
+        /*はじめは非表示*/
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+
+    /* footer */
+    .footer {
+        max-width: 450px;
+        width: 100%;
+        background-color: #d9eaec;
+        padding: 10% 0;
+    }
+    .header-h11 {
+        height: 100px;
+        width: 100px;
+        margin: auto;
+    }
+    .footer-h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+    .footer-h3 {
+        font-size: 20px;
+        /* margin-left: 10%; */
+        margin: 4% 0 2% 10%;
+    }
+    .footer-p {
+        font-size: 18px;
+        margin-left: 14%;
+    }
+    .h2-tel {
+        font-size: 26px;
+        margin-left: 14%;
+        background-color: #d9eaec;
+        border: 1px solid #000;
+        border-radius: 26px;
+        width: 70%;
+        text-align: center;
+        padding: 1%;
+    }
+    .h2-tel a {
+        color: #000;
+    }
+    .h2-tel a:hover {
+        color: #fff;
+    }
+    .right-wrap {
+        width: 80%;
+        height: 200px;
+        position: relative;
+        display: block;
+        margin: 5% auto;
+    }
+    .right-wrap iframe{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .copyright {
+        text-align: center;
+    }
+    small {
+        font-size: 8px;
+    }
+
+    /* form */
+    .recruit {
+        max-width: 450px;
+        width: 100%;
+        margin-top: 100px;
+    }
+    .recruit-main {
+        width: 100%;
+    }
+    .recruit-h2 {
+        font-size: 30px;
+        color: #000;
+        text-align: center;
+        background-color: #bcd537;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    /*==================================================
+    アコーディオンのためのcss
+    ===================================*/
+
+    /*アコーディオン全体*/
+    .accordion-area{
+        list-style: none;
+        width: 90%;
+        max-width: 400px;
+        margin:0 auto;
+    }
+
+    .accordion-area li{
+        margin: 10px 0;
+    }
+
+    .accordion-area section {
+    border: 1px solid #ccc;
+    }
+
+    /*アコーディオンタイトル*/
+    .title {
+        position: relative;/*+マークの位置基準とするためrelative指定*/
+        cursor: pointer;
+        font-size:1rem;
+        font-weight: normal;
+        padding: 3% 3% 3% 50px;
+        transition: all .5s ease;
+    }
+
+    /*アイコンの＋と×*/
+    .title::before,
+    .title::after{
+        position: absolute;
+        content:'';
+        width: 15px;
+        height: 2px;
+        background-color: #333;
+        
+    }
+    .title::before{
+        top:48%;
+        left: 15px;
+        transform: rotate(0deg);
+        
+    }
+    .title::after{    
+        top:48%;
+        left: 15px;
+        transform: rotate(90deg);
+
+    }
+    /*　closeというクラスがついたら形状変化　*/
+    .title.close::before{
+    transform: rotate(45deg);
+    }
+
+    .title.close::after{
+    transform: rotate(-45deg);
+    }
+
+    /*アコーディオンで現れるエリア*/
+    .box {
+        display: none;/*はじめは非表示*/
+        background: #f3f3f3;
+        margin:0 3% 3% 3%;
+        padding: 3%;
+    }
+
+    form {
+        width: 80%;
+        margin: 3% auto;
+        padding: 3% 0;
+        border: 1px solid #000;
+        border-radius: 20px;
+    }
+    .app-title {
+        text-align: center;
+        font-size: 20px;
+    }
+    .application {
+        width: 70%;
+        margin: 3% auto 0 auto;
+        border-collapse: separate;
+        border-spacing: 5% 0;
+        table-layout: fixed;
+    }
+    tr {
+        display: flex;
+        flex-direction: column;
+    }
+    .table-th {
+        width: 100%;
+        padding: 2% 0;
+        font-size: 14px;
+        text-align: left;
+    }
+    .table-td {
+        width: 100%;
+        padding: 2% 0;
+        font-size: 14px;
+    }
+    .td-wrap {
+        width: 100%;
+        padding: 5%;
+        display: flex;
+    }
+    label {
+        display: flex;
+        margin: auto;
+    }
+    input[type=radio] {
+        transform: scale(1.5);
+    } 
+    .radio-label {
+        font-size: 14px;
+        padding: 2%;
+        white-space: nowrap;
+    }
+    .message {
+        vertical-align: top;
+    }
+    .textarea {
+        width: 100%;
+        padding: 2% 0;
+        font-size: 14px;
+    }
+    .button-wrap {
+        margin-top: 3%;
+        text-align: center;
+    }
+    .reset-btn,
+    .sub-btn {
+        font-size: 16px;
+        padding: 1%;
+    }
+    .reset-btn {
+        margin-right: 5%;
+    }
+}
+
+/* TAB */
+@media screen and (min-width: 450px) and (max-width: 850px) {
+    .header {
+        max-width: 850px;
+        width: 100%;
+        height: 120px;
+        position: fixed;
+        top: 0;
+        z-index: 11;
+    }
+    .header-wrap {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .header-wrap.active {
+        display: none;
+    }
+    .header-h1 {
+        margin-left: 8%;
+        width: 100px;
+        height: 100px;
+    }
+    .logo {
+        width: 100%;
+        object-fit: cover;
+    }
+    .nav-menu {
+        display: none;
+    }
+    .openbtn1 {
+        /*ボタン内側の基点となるためrelativeを指定。
+ 追従するナビゲーションの場合はfixed＋top、rightといった位置をセットで指定*/
+        position: relative;
+        cursor: pointer;
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        margin-right: 8%;
+    }
+
+    /*ボタン内側*/
+    .openbtn1 span{
+        display: inline-block;
+        transition: all .4s;/*アニメーションの設定*/
+        position: absolute;
+        left: 14px;
+        height: 2px;
+        border-radius: 5px;
+        background: #000;
+        width: 58%;
+    }
+
+    .openbtn1 span:nth-of-type(1) {
+        top:10px;	
+    }
+
+    .openbtn1 span:nth-of-type(2) {
+        top:19px;
+    }
+
+    .openbtn1 span:nth-of-type(3) {
+        top:28px;
+    }
+
+    .openbtn1 span:nth-of-type(3)::after {
+        content:"Menu";/*3つ目の要素のafterにMenu表示を指定*/
+        position: absolute;
+        top: 6px;
+        left: 0;
+        color: #000;
+        font-size: 80%;
+        text-transform: uppercase;
+    }
+
+    /*activeクラスが付与されると線が回転して×になり、Menu⇒Closeに変更*/
+    .openbtn1.active span:nth-of-type(1) {
+        top: 14px;
+        left: 18px;
+        transform: translateY(6px) rotate(-45deg);
+        width: 30%;
+    }
+
+    .openbtn1.active span:nth-of-type(2) {
+        opacity: 0;
+    }
+
+    .openbtn1.active span:nth-of-type(3){
+        top: 26px;
+        left: 18px;
+        transform: translateY(-6px) rotate(45deg);
+        width: 30%;
+    }
+
+    .openbtn1.active span:nth-of-type(3)::after {
+        content:"Close";/*3つ目の要素のafterにClose表示を指定*/
+        transform: translateY(0) rotate(-45deg);
+        top:5px;
+        left:4px;
+    }
+    .humbergerIcon-menu {
+        display: none;
+    }
+    .humbergerIcon-menu.active {
+        display: block;
+        visibility: visible;
+        width: 100vw;
+        height: 100vh;
+        background-color: #fff;
+    }
+    .humbergerIcon-Lists {
+        width: 100%;
+        padding-top: 40%;
+    }
+    .humbergerIcon-li {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .humbergerIcon-li a {
+        font-size: 20px;
+        font-weight: bold;
+        color: #000;
+    }
+    .humbergerIcon-li a:hover {
+        font-size: 20px;
+        background-color: #bcd537;
+        padding: 7px;
+        border-radius: 10px;
+    }
+     /* home */
+    .home {
+        max-width: 850px;
+        width: 100%;
+        margin-top: 100px;
+    }
+    .mv {
+        width: 80%;
+        margin: auto;
+        height: 500px;
+    }
+    .slider {
+        position:relative;
+        z-index: 1;
+      /*↑z-indexの値をh1のz-indexの値よりも小さくして背景に回す*/
+    }
+    /*　背景画像設定　*/ 
+    /* .slider-item01 {
+        background:url(../img/slide-item01.png);
+    }
+    
+    .slider-item02 {
+        background:url(../img/slide-item02.png);
+    }
+    
+    .slider-item03 {
+        background:url(../img/slide-item03.png);
+    } */
+    
+    .slider-item img{
+        width: 100%;/*各スライダー全体の横幅を画面の高さいっぱい（100%）にする*/
+        /* height: 15px; 各スライダー全体の縦幅を画面の高さいっぱい（100vh）にする */
+        /* background-repeat: no-repeat;背景画像をリピートしない */
+        /* background-position: center;背景画像の位置を中央に */
+        /* background-size: cover;背景画像が.slider-item全体を覆い表示 */
+        object-fit: cover;
+    }
+    
+    /*ドットナビゲーションの設定*/
+    
+    .slick-dots {
+      position: relative;
+      z-index: 3;
+      text-align:center;
+      margin:0 0 50px 0;/*ドットの位置*/
+    }
+    
+    .slick-dots li {
+        display:inline-block;
+        margin:0 5px;
+    }
+    
+    .slick-dots button {
+        color: transparent;
+        outline: none;
+        width:8px;/*ドットボタンのサイズ*/
+        height:8px;/*ドットボタンのサイズ*/
+        display:block;
+        border-radius:50%;
+        background:#fff;/*ドットボタンの色*/
+    }
+    
+    .slick-dots .slick-active button{
+        background:#333;/*ドットボタンの現在地表示の色*/
+    }
+
+     /* menu */
+    .menu {
+        max-width: 850px;
+        width: 100%;
+    }
+    .menu-mens-wrap {
+        margin: 5% 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .menu-ladys-wrap {
+        margin: 5% 0;
+    }
+    .menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .mens-title,
+    .ladys-title {
+        margin: 5% 0 3% 10%;
+    }
+    .menu-h2 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .menu-p {
+        font-size: 20px;
+    }
+    .menu-boxs {
+        margin: auto;
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .menu-box {
+        width: 150px;
+        height: 150px;
+        background-color: #bcd537;
+        border-radius: 10px;
+        box-shadow: 5px 5px 1px #000;
+        transform: skewX(-10deg);
+        transition: all 0.7s linear;
+    }
+    .menu-box:hover {
+        transform: translate(10px,10px);
+        box-shadow: none;
+        background-color: #d9eaec;
+    }
+    .m:first-child {
+        margin-left: 23vw;
+    }
+    .m:nth-child(2) {
+        margin-left: 10vw;
+        margin-right: 15vw;
+    }
+    .menu-box h3 {
+        text-align: center;
+        margin-top: 35%;
+        font-size: 24px;
+    }
+    .menu-box p {
+        text-align: center;
+        margin-top: 10%;
+        font-size: 24px;
+    }
+
+    /*リンクを右下に固定*/
+    #page-top {
+        position: fixed;
+        right: 100px;
+        bottom:10px;
+        z-index: 2;
+        /*はじめは非表示*/
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+
+    /* footer */
+    .footer {
+        max-width: 850px;
+        width: 100%;
+        background-color: #d9eaec;
+        padding: 5% 0;
+    }
+    .footer-h2 {
+        font-size: 28px;
+        text-align: center;
+    }
+    .footer-h3 {
+        font-size: 24px;
+        margin-left: 10%;
+        margin-top: 3%;
+    }
+    .footer-p {
+        font-size: 20px;
+        margin-left: 14%;
+    }
+    .header-h11 {
+        height: 100px;
+        width: 100px;
+        margin: auto;
+    }
+    .h2-tel {
+        font-size: 26px;
+        margin-left: 14%;
+        background-color: #d9eaec;
+        border: 2px solid #000;
+        border-radius: 26px;
+        width: 76%;
+        text-align: center;
+        padding: 1%;
+    }
+    .h2-tel a {
+        color: #000;
+    }
+    .h2-tel a:hover {
+        color: #fff;
+    }
+    .float-wrap {
+        width: 90%;
+        height: 260px;
+        margin: 0 auto;
+    }
+    .left-wrap {
+        float: left;
+        width: 50%;
+    }
+    .right-wrap {
+        float: right;
+        width: 50%;
+        height: 200px;
+        position: relative;
+        display: block;
+        margin: 3% auto 1% auto;
+    }
+    .right-wrap iframe{
+        position: absolute;
+        width: 80%;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .copyright {
+        width: 100%;
+        text-align: center;
+    }
+    small {
+        font-size: 8px;
+    }
+
+    /* form */
+    .recruit {
+        max-width: 850px;
+        width: 100%;
+        margin-top: 120px;
+    }
+    .recruit-main {
+        width: 100%;
+    }
+    .recruit-h2 {
+        font-size: 30px;
+        color: #000;
+        text-align: center;
+        background-color: #bcd537;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    /*==================================================
+    アコーディオンのためのcss
+    ===================================*/
+
+    /*アコーディオン全体*/
+    .accordion-area{
+        list-style: none;
+        width: 90%;
+        max-width: 700px;
+        margin:0 auto;
+    }
+
+    .accordion-area li{
+        margin: 10px 0;
+    }
+
+    .accordion-area section {
+    border: 1px solid #ccc;
+    }
+
+    /*アコーディオンタイトル*/
+    .title {
+        position: relative;/*+マークの位置基準とするためrelative指定*/
+        cursor: pointer;
+        font-size:1rem;
+        font-weight: normal;
+        padding: 3% 3% 3% 50px;
+        transition: all .5s ease;
+    }
+
+    /*アイコンの＋と×*/
+    .title::before,
+    .title::after{
+        position: absolute;
+        content:'';
+        width: 15px;
+        height: 2px;
+        background-color: #333;
+        
+    }
+    .title::before{
+        top:48%;
+        left: 15px;
+        transform: rotate(0deg);
+        
+    }
+    .title::after{    
+        top:48%;
+        left: 15px;
+        transform: rotate(90deg);
+
+    }
+    /*　closeというクラスがついたら形状変化　*/
+    .title.close::before{
+    transform: rotate(45deg);
+    }
+
+    .title.close::after{
+    transform: rotate(-45deg);
+    }
+
+    /*アコーディオンで現れるエリア*/
+    .box {
+        display: none;/*はじめは非表示*/
+        background: #f3f3f3;
+        margin:0 3% 3% 3%;
+        padding: 3%;
+    }
+
+    form {
+        width: 80%;
+        margin: 3% auto;
+        padding: 3% 0;
+        border: 1px solid #000;
+        border-radius: 20px;
+    }
+    .app-title {
+        text-align: center;
+        font-size: 30px;
+    }
+    .application {
+        width: 70%;
+        margin: 3% auto 0 auto;
+        border-collapse: separate;
+        border-spacing: 5% 0;
+        table-layout: fixed;
+    }
+
+    .table-th {
+        width: 30%;
+        padding: 2% 0;
+        font-size: 20px;
+        text-align: center;
+    }
+    .table-td {
+        width: 100%;
+        padding: 2% 0;
+        font-size: 20px;
+    }
+    .td-wrap {
+        width: 100%;
+        padding: 5%;
+        display: flex;
+    }
+    label {
+        display: flex;
+        margin: auto;
+    }
+    input[type=radio] {
+        transform: scale(1.5);
+    } 
+    .radio-label {
+        font-size: 20px;
+        padding: 2%;
+        white-space: nowrap;
+    }
+    .message {
+        vertical-align: top;
+    }
+    .textarea {
+        width: 100%;
+        padding: 2% 0;
+        font-size: 20px;
+    }
+    .button-wrap {
+        margin-top: 3%;
+        text-align: center;
+    }
+    .reset-btn,
+    .sub-btn {
+        font-size: 16px;
+        padding: 1%;
+    }
+    .reset-btn {
+        margin-right: 5%;
+    }
+}
+
+/* PC */
+@media screen and (min-width: 850px) {
+    body {
+        max-width: 1400px;
+        margin: auto;
+    }
+    .header {
+        max-width: 1028px;
+        width: 100%;
+        height: 130px;
+        margin: auto;
+    }
+    .header-wrap {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .header-h1 {
+        margin-left: 8%;
+        width: 120px;
+        height: 120px;
+    }
+    .logo {
+        width: 100%;
+        object-fit: cover;
+    }
+    .nav-menu {
+        margin-right: 3%;
+        flex-basis: 50%;
+    }
+    .nav-menu ul{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .list-item {
+        width: 100%;
+    }
+    .list-item a{
+        color: #000;
+        font-size: 20px;
+        font-weight: bold;
+        width: 100%;
+    }
+    .list-item a:hover {
+        background-color: #bcd537;
+        border-radius: 10px;
+        padding: 8%;
+    }
+    .openbtn1 {
+        display: none;
+    }
+    .humbergerIcon-menu {
+        display: none;
+    }
+    .home {
+        max-width: 1028px;
+        width: 100%;
+        margin: auto;
+    }
+    .mv {
+        width: 90%;
+        margin: auto;
+        height: 500px;
+    }
+    .slider {
+        position:relative;
+        z-index: 1;
+    }
+    .slider-item img{
+        width: 100%;/*各スライダー全体の横幅を画面の高さいっぱい（100%）にする*/
+        height: 400px;
+        /* height: 15px; 各スライダー全体の縦幅を画面の高さいっぱい（100vh）にする */
+        /* background-repeat: no-repeat;背景画像をリピートしない */
+        /* background-position: center;背景画像の位置を中央に */
+        /* background-size: cover;背景画像が.slider-item全体を覆い表示 */
+        object-fit: cover;
+    }
+    
+    /*矢印の設定*/
+    
+    .slick-prev, 
+    .slick-next {
+        position: absolute;
+        z-index: 3;
+        top: 42%;
+        cursor: pointer;/*マウスカーソルを指マークに*/
+        outline: none;/*クリックをしたら出てくる枠線を消す*/
+        border-top: 2px solid #fff;/*矢印の色*/
+        border-right: 2px solid #fff;/*矢印の色*/
+        height: 25px;
+        width: 25px;
+    }
+    
+    .slick-prev {/*戻る矢印の位置と形状*/
+        left:2.5%;
+        transform: rotate(-135deg);
+    }
+    .slick-next {/*次へ矢印の位置と形状*/
+        right:2.5%;
+        transform: rotate(45deg);
+    }
+    
+    /*ドットナビゲーションの設定*/
+    
+    .slick-dots {
+      position: relative;
+      z-index: 3;
+      text-align:center;
+      margin:0 0 50px 0;/*ドットの位置*/
+    }
+    
+    .slick-dots li {
+        display:inline-block;
+        margin:0 5px;
+    }
+    
+    .slick-dots button {
+        color: transparent;
+        outline: none;
+        width:8px;/*ドットボタンのサイズ*/
+        height:8px;/*ドットボタンのサイズ*/
+        display:block;
+        border-radius:50%;
+        background:#fff;/*ドットボタンの色*/
+    }
+    
+    .slick-dots .slick-active button{
+        background:#333;/*ドットボタンの現在地表示の色*/
+    }
+     /* menu */
+    .menu {
+        max-width: 1028px;
+        width: 100%;
+        margin: auto;
+    }
+    .menu-mens-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .menu-ladys-wrap {
+        margin-top: 5%;
+    }
+    .menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .menu-img {
+        width: 150px;
+        height: 100px;
+    }
+    .menu-img img {
+        width: 100%;
+        object-fit: cover;
+    }
+    .mens-title {
+        margin-right: 10%;
+    }
+    .ladys-title {
+        margin: 0 0 3% 10%;
+    }
+    .menu-h2 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .menu-p {
+        font-size: 20px;
+    }
+    .menu-boxs {
+        margin: auto;
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .menu-box {
+        width: 150px;
+        height: 150px;
+        background-color: #bcd537;
+        border-radius: 10px;
+        box-shadow: 5px 5px 1px #000;
+        transform: skewX(-10deg);
+        transition: all 0.7s linear;
+    }
+    .menu-box:hover {
+        transform: translate(10px,10px);
+        box-shadow: none;
+        background-color: #d9eaec;
+    }
+    .menu-box h3 {
+        text-align: center;
+        margin-top: 35%;
+        font-size: 24px;
+    }
+    .menu-box p {
+        text-align: center;
+        margin-top: 10%;
+        font-size: 24px;
+    }
+
+    /*リンクを右下に固定*/
+    #page-top {
+        position: fixed;
+        right: 100px;
+        bottom:10px;
+        z-index: 2;
+        /*はじめは非表示*/
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+
+    /* footer */
+    .footer {
+        max-width: 1400px;
+        width: 100%;
+        background-color: #d9eaec;
+        padding: 4% 0;
+    }
+    .header-h11 {
+        height: 100px;
+        width: 100px;
+        margin: auto;
+    }
+    .footer-h2 {
+        font-size: 36px;
+        text-align: center;
+    }
+    .footer-h3 {
+        font-size: 24px;
+        margin: 4% 0 3% 10%;
+        /* margin-top: 5%; */
+    }
+    .footer-p {
+        font-size: 24px;
+        margin-left: 14%;
+        margin-top: 2%;
+    }
+    .h2-tel {
+        font-size: 32px;
+        margin-left: 14%;
+        background-color: #d9eaec;
+        border: 2px solid #000;
+        border-radius: 32px;
+        width: 60%;
+        text-align: center;
+        padding: 1%;
+    }
+    .h2-tel a {
+        color: #000;
+    }
+    .h2-tel a:hover {
+        color: #fff
+    }
+    .float-wrap {
+        width: 1028px;
+        height: 370px;
+        margin: 0 auto;
+    }
+    .left-wrap {
+        float: left;
+        width: 50%;
+    }
+    .right-wrap {
+        float: right;
+        width: 50%;
+        height: 300px;
+        position: relative;
+        display: block;
+        margin: 3% auto 2% auto;
+    }
+    .right-wrap iframe{
+        position: absolute;
+        width: 80%;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .copyright {
+        width: 100%;
+        text-align: center;
+    }
+    small {
+        font-size: 8px;
+    }
+
+    /* form */
+    .recruit {
+        max-width: 1028px;
+        width: 100%;
+    }
+    .recruit-main {
+        width: 100%;
+    }
+    .recruit-h2 {
+        font-size: 30px;
+        color: #000;
+        text-align: center;
+        background-color: #bcd537;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    /*==================================================
+    アコーディオンのためのcss
+    ===================================*/
+
+    /*アコーディオン全体*/
+    .accordion-area{
+        list-style: none;
+        width: 96%;
+        max-width: 900px;
+        margin:0 auto;
+    }
+
+    .accordion-area li{
+        margin: 10px 0;
+    }
+
+    .accordion-area section {
+    border: 1px solid #ccc;
+    }
+
+    /*アコーディオンタイトル*/
+    .title {
+        position: relative;/*+マークの位置基準とするためrelative指定*/
+        cursor: pointer;
+        font-size:1rem;
+        font-weight: normal;
+        padding: 3% 3% 3% 50px;
+        transition: all .5s ease;
+    }
+
+    /*アイコンの＋と×*/
+    .title::before,
+    .title::after{
+        position: absolute;
+        content:'';
+        width: 15px;
+        height: 2px;
+        background-color: #333;
+        
+    }
+    .title::before{
+        top:48%;
+        left: 15px;
+        transform: rotate(0deg);
+        
+    }
+    .title::after{    
+        top:48%;
+        left: 15px;
+        transform: rotate(90deg);
+
+    }
+    /*　closeというクラスがついたら形状変化　*/
+    .title.close::before{
+    transform: rotate(45deg);
+    }
+
+    .title.close::after{
+    transform: rotate(-45deg);
+    }
+
+    /*アコーディオンで現れるエリア*/
+    .box {
+        display: none;/*はじめは非表示*/
+        background: #f3f3f3;
+        margin:0 3% 3% 3%;
+        padding: 3%;
+    }
+
+    form {
+        width: 80%;
+        margin: 3% auto;
+        padding: 3% 0;
+        border: 1px solid #000;
+        border-radius: 20px;
+    }
+    .app-title {
+        text-align: center;
+        font-size: 30px;
+    }
+    .application {
+        width: 70%;
+        margin: 3% auto 0 auto;
+        border-collapse: separate;
+        border-spacing: 5% 0;
+        table-layout: fixed;
+    }
+
+    .table-th {
+        width: 30%;
+        padding: 2% 0;
+        font-size: 20px;
+        text-align: center;
+    }
+    .table-td {
+        width: 100%;
+        padding: 2% 0;
+        font-size: 20px;
+    }
+    .td-wrap {
+        width: 100%;
+        padding: 5%;
+        display: flex;
+    }
+    label {
+        display: flex;
+        margin: auto;
+    }
+    input[type=radio] {
+        transform: scale(1.5);
+    } 
+    .radio-label {
+        font-size: 20px;
+        padding: 2%;
+        white-space: nowrap;
+    }
+    .message {
+        vertical-align: top;
+    }
+    .textarea {
+        width: 100%;
+        padding: 2% 0;
+        font-size: 20px;
+    }
+    .button-wrap {
+        margin-top: 3%;
+        text-align: center;
+    }
+    .reset-btn,
+    .sub-btn {
+        font-size: 16px;
+        padding: 1%;
+    }
+    .reset-btn {
+        margin-right: 5%;
+    }
+}
+
+
+/* section:not(.recruit,.r, .home) {
+    opacity: 0;
+    transform: translateY(100px); 
+    transition: all 1.5s;
+}
+ section:not(.recruit,.r, .home).scrollin {
+    opacity: 1;
+    transform: translateY(0);
+} */
+
+/*ページトップリンクの形状*/
+#page-top a{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    background:#942D2F;
+    border-radius: 5px;
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase; 
+    text-decoration: none;
+    font-size:0.6rem;
+    transition:all 0.3s;
+}
+
+#page-top a:hover{
+    background: #777;
+}
+
+
+/*　上に上がる動き　*/
+
+#page-top.UpMove{
+    animation: UpAnime 0.5s forwards;
+}
+@keyframes UpAnime{
+from {
+    opacity: 0;
+    transform: translateY(100px);
+}
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+} 
